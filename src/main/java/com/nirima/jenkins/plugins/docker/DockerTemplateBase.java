@@ -467,7 +467,7 @@ public class DockerTemplateBase implements Describable<DockerTemplateBase>, Seri
         this.cpuCount = cpuCount;
     }
     
-    @CheckForNul
+    @CheckForNull
     public String getCpus() {
         return Util.fixEmpty(cpus);
     }
