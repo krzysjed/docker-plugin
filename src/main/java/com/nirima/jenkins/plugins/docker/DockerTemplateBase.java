@@ -127,6 +127,7 @@ public class DockerTemplateBase implements Describable<DockerTemplateBase>, Seri
     public @CheckForNull Integer memoryLimit;
     public @CheckForNull Integer memorySwap;
     public @CheckForNull Long cpuCount;
+    public @CheckForNull Long cpuPercent;
     public @CheckForNull String cpus;
     public @CheckForNull Long cpuPeriod;
     public @CheckForNull Long cpuQuota;
@@ -196,6 +197,7 @@ public class DockerTemplateBase implements Describable<DockerTemplateBase>, Seri
                               Integer memoryLimit,
                               Integer memorySwap,
                               Long cpuCount,
+                              Long cpuPercent,
                               Long cpuPeriod,
                               Long cpuQuota,
                               Integer cpuShares,
@@ -221,6 +223,7 @@ public class DockerTemplateBase implements Describable<DockerTemplateBase>, Seri
         setMemoryLimit(memoryLimit);
         setMemorySwap(memorySwap);
         setCpuCount(cpuCount);
+        setCpuPercent(cpuPercent);
         setCpuPeriod(cpuPeriod);
         setCpuQuota(cpuQuota);
         setCpuShares(cpuShares);
@@ -475,6 +478,16 @@ public class DockerTemplateBase implements Describable<DockerTemplateBase>, Seri
     @DataBoundSetter
     public void setCpus(String cpus) {
         this.cpus = Util.fixEmpty(cpus);
+    }
+
+    @CheckForNull
+    public Long getCpuPercent() {
+        return cpuPercent;
+    }
+
+    @DataBoundSetter
+    public void setCpuPercent(Long cpuPercent) {
+        this.cpuPercent = cpuPercent;
     }
 
     @CheckForNull
@@ -803,6 +816,11 @@ public class DockerTemplateBase implements Describable<DockerTemplateBase>, Seri
             hostConfig(containerConfig).withNanoCPUs(nanoCpus);
         }
 
+        final Long cpuPercentOrNull = getCpuPercent();
+        if (cpuPercentOrNull != null && cpuPercentOrNull > 0) {
+            hostConfig(containerConfig).withCpuPercent(cpuPercentOrNull);
+        }
+
         final Long cpuPeriodOrNull = getCpuPeriod();
         if (cpuPeriodOrNull != null && cpuPeriodOrNull > 0) {
             hostConfig(containerConfig).withCpuPeriod(cpuPeriodOrNull);
@@ -1117,6 +1135,7 @@ public class DockerTemplateBase implements Describable<DockerTemplateBase>, Seri
         if (memoryLimit != null ? !memoryLimit.equals(that.memoryLimit) : that.memoryLimit != null) return false;
         if (memorySwap != null ? !memorySwap.equals(that.memorySwap) : that.memorySwap != null) return false;
         if (cpuCount != null ? !cpuCount.equals(that.cpuCount) : that.cpuCount != null) return false;
+        if (cpuPercent != null ? !cpuPercent.equals(that.cpuPercent) : that.cpuPercent != null) return false;
         if (cpus != null ? !cpus.equals(that.cpus) : that.cpus != null) return false;
         if (cpuPeriod != null ? !cpuPeriod.equals(that.cpuPeriod) : that.cpuPeriod != null) return false;
         if (cpuQuota != null ? !cpuQuota.equals(that.cpuQuota) : that.cpuQuota != null) return false;
@@ -1153,6 +1172,7 @@ public class DockerTemplateBase implements Describable<DockerTemplateBase>, Seri
         result = 31 * result + (memoryLimit != null ? memoryLimit.hashCode() : 0);
         result = 31 * result + (memorySwap != null ? memorySwap.hashCode() : 0);
         result = 31 * result + (cpuCount != null ? cpuCount.hashCode() : 0);
+        result = 31 * result + (cpuPercent != null ? cpuPercent.hashCode() : 0);
         result = 31 * result + (cpus != null ? cpus.hashCode() : 0);
         result = 31 * result + (cpuPeriod != null ? cpuPeriod.hashCode() : 0);
         result = 31 * result + (cpuQuota != null ? cpuQuota.hashCode() : 0);
@@ -1192,6 +1212,7 @@ public class DockerTemplateBase implements Describable<DockerTemplateBase>, Seri
         bldToString(sb, "memoryLimit", memoryLimit);
         bldToString(sb, "memorySwap", memorySwap);
         bldToString(sb, "cpuCount", cpuCount);
+        bldToString(sb, "cpuPercent", cpuPercent);
         bldToString(sb, "cpus", cpus);
         bldToString(sb, "cpuPeriod", cpuPeriod);
         bldToString(sb, "cpuQuota", cpuQuota);

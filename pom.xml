@@ -10,7 +10,7 @@
 
     <groupId>io.jenkins.docker</groupId>
     <artifactId>docker-plugin</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>90.3.0</version>
     <packaging>hpi</packaging>
 
     <name>Docker plugin</name>

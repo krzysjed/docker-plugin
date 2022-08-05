@@ -53,6 +53,7 @@ public class DockerBuilderControlOptionRun extends DockerBuilderControlCloudOpti
     public final Integer memoryLimit;
     public final Integer memorySwap;
     public final Long cpuCount;
+    public final Long cpuPercent;
     public final String cpus;
     public final Long cpuPeriod;
     public final Long cpuQuota;
@@ -78,6 +79,7 @@ public class DockerBuilderControlOptionRun extends DockerBuilderControlCloudOpti
             Integer memoryLimit,
             Integer memorySwap,
             Long cpuCount,
+            Long cpuPercent,
             String cpus,
             Long cpuPeriod,
             Long cpuQuota,
@@ -106,6 +108,7 @@ public class DockerBuilderControlOptionRun extends DockerBuilderControlCloudOpti
         this.memoryLimit = memoryLimit;
         this.memorySwap = memorySwap;
         this.cpuCount = cpuCount;
+        this.cpuPercent = cpuPercent;
         this.cpus = cpus;
         this.cpuPeriod = cpuPeriod;
         this.cpuQuota = cpuQuota;
@@ -180,7 +183,7 @@ public class DockerBuilderControlOptionRun extends DockerBuilderControlCloudOpti
 
         DockerTemplateBase template = new DockerSimpleTemplate(
                 xImage, pullCredentialsId, dnsString, network, xCommand, mountsString, volumesFrom,
-                environmentsString, xHostname, xUser, extraGroupsString, memoryLimit, memorySwap, cpuCount, cpuPeriod, cpuQuota,
+                environmentsString, xHostname, xUser, extraGroupsString, memoryLimit, memorySwap, cpuCount, cpuPercent, cpuPeriod, cpuQuota,
                 cpuShares, shmSize, bindPorts, bindAllPorts, privileged, tty, macAddress, null);
 
         LOG.info("Starting container for image {}", xImage);
