@@ -34,6 +34,7 @@ def templateBaseParameters = [
   // capabilitiesToDropString: '',
   // CpuCount:                 (Long)null,
   // CpuPercent:               (Long)null,
+  // cpus:                     '',
   // cpuPeriod:                (Long)null,
   // cpuQuota:                 (Long)null,
   // cpuShares:                (Integer)null,

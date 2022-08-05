@@ -75,7 +75,11 @@
      </f:entry>
 
      <f:entry title="${%CPU-Percent}" field="cpuPercent">
-       <f:number clazz="positive-number" min="1" max="100" step="1"/>
+       <f:number clazz="positive-number" min="1" max="99" step="1"/>
+     </f:entry>
+
+     <f:entry title="${%CPU resources}" field="cpus">
+       <f:textbox />
      </f:entry>
 
      <f:entry title="${%CPU Period in us}" field="cpuPeriod">

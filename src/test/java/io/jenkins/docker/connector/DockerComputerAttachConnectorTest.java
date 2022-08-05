@@ -42,10 +42,11 @@ public class DockerComputerAttachConnectorTest extends DockerComputerConnectorTe
 
     private void testAgentCanStartAndConnect(final DockerComputerAttachConnector connector, final String testName)
             throws IOException, ExecutionException, InterruptedException, TimeoutException {
+        final String imagenameAndVersion = ATTACH_AGENT_IMAGE_IMAGENAME + ':' + getJenkinsDockerImageVersionForThisEnvironment();
         final DockerTemplate template = new DockerTemplate(
-                new DockerTemplateBase(ATTACH_AGENT_IMAGE_IMAGENAME),
+                new DockerTemplateBase(imagenameAndVersion),
                 connector,
-                LABEL, COMMON_IMAGE_HOMEDIR, INSTANCE_CAP
+                getLabelForTemplate(), COMMON_IMAGE_HOMEDIR, INSTANCE_CAP
         );
         template.setName(testName);
         should_connect_agent(template);
