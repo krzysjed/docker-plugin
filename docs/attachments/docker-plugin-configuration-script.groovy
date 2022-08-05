@@ -32,7 +32,6 @@ def templateBaseParameters = [
   // bindPorts:                '',
   // capabilitiesToAddString:  '',
   // capabilitiesToDropString: '',
-  // CpuCount:                 (Long)null,
   // cpus:                     '',
   // cpuPeriod:                (Long)null,
   // cpuQuota:                 (Long)null,

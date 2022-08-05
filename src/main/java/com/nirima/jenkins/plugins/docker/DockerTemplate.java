@@ -202,13 +202,8 @@ public class DockerTemplate implements Describable<DockerTemplate> {
         return dockerTemplateBase.getMemorySwap();
     }
 
-
-    public Long getCpuCount() {
-        return dockerTemplateBase.getCpuCount();
-
     public String getCpus() {
         return dockerTemplateBase.getCpus();
-
     }
 
     public Long getCpuPeriod() {
