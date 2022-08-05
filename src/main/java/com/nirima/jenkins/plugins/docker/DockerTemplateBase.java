@@ -197,7 +197,7 @@ public class DockerTemplateBase implements Describable<DockerTemplateBase>, Seri
                               Integer memoryLimit,
                               Integer memorySwap,
                               Long cpuCount,
-			      Long cpuPercent,
+                              Long cpuPercent,
                               Long cpuPeriod,
                               Long cpuQuota,
                               Integer cpuShares,
