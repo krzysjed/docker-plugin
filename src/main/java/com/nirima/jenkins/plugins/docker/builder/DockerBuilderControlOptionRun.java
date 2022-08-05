@@ -2,11 +2,11 @@ package com.nirima.jenkins.plugins.docker.builder;
 
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.PullImageCmd;
+import com.github.dockerjava.api.command.PullImageResultCallback;
 import com.github.dockerjava.api.exception.DockerClientException;
 import com.github.dockerjava.api.exception.DockerException;
 import com.github.dockerjava.api.exception.NotFoundException;
 import com.github.dockerjava.api.model.PullResponseItem;
-import com.github.dockerjava.core.command.PullImageResultCallback;
 import com.google.common.base.Strings;
 import com.nirima.jenkins.plugins.docker.DockerCloud;
 import com.nirima.jenkins.plugins.docker.DockerSimpleTemplate;
@@ -53,6 +53,7 @@ public class DockerBuilderControlOptionRun extends DockerBuilderControlCloudOpti
     public final Integer memoryLimit;
     public final Integer memorySwap;
     public final Long cpuCount;
+    public final String cpus;
     public final Long cpuPeriod;
     public final Long cpuQuota;
     public final Integer cpuShares;
@@ -77,6 +78,7 @@ public class DockerBuilderControlOptionRun extends DockerBuilderControlCloudOpti
             Integer memoryLimit,
             Integer memorySwap,
             Long cpuCount,
+            String cpus,
             Long cpuPeriod,
             Long cpuQuota,
             Integer cpuShares,
@@ -104,6 +106,7 @@ public class DockerBuilderControlOptionRun extends DockerBuilderControlCloudOpti
         this.memoryLimit = memoryLimit;
         this.memorySwap = memorySwap;
         this.cpuCount = cpuCount;
+        this.cpus = cpus;
         this.cpuPeriod = cpuPeriod;
         this.cpuQuota = cpuQuota;
         this.cpuShares = cpuShares;
