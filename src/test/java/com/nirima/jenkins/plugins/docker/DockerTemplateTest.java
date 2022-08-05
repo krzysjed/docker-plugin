@@ -17,6 +17,7 @@ public class DockerTemplateTest {
     Integer memoryLimit = 1024;
     Integer memorySwap = 1280;
     Long cpuCount = 0L;
+    Long cpuPercent = 0L;
     Long cpuPeriod = 0L;
     Long cpuQuota = 0L;
     Integer cpuShares = 1000;
@@ -47,7 +48,7 @@ public class DockerTemplateTest {
     private DockerTemplate getDockerTemplateInstanceWithDNSHost(String dnsString) {
         final DockerTemplateBase dockerTemplateBase = new DockerTemplateBase(
                 image, null, dnsString, network, dockerCommand, mountsString, volumesFrom,
-                environmentsString, hostname, user, extraGroupsString, memoryLimit, memorySwap, cpuCount, cpuPeriod, cpuQuota,
+                environmentsString, hostname, user, extraGroupsString, memoryLimit, memorySwap, cpuCount, cpuPercent, cpuPeriod, cpuQuota,
                 cpuShares, shmSize, bindPorts, bindAllPorts, privileged, tty, macAddress, extraHostsString);
         dockerTemplateBase.setCapabilitiesToAddString(capabilitiesToAddString);
         dockerTemplateBase.setCapabilitiesToDropString(capabilitiesToDropString);

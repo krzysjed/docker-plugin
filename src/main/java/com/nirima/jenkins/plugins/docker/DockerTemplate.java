@@ -204,6 +204,10 @@ public class DockerTemplate implements Describable<DockerTemplate> {
         return dockerTemplateBase.getCpuCount();
     }
 
+    public Long getCpuPercent() {
+        return dockerTemplateBase.getCpuPercent();
+    }
+
     public Long getCpuPeriod() {
         return dockerTemplateBase.getCpuPeriod();
     }
